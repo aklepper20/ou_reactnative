@@ -1,48 +1,45 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, FlatList } from "react-native";
 import React from "react";
+import Screen from "../components/Screen";
+import Card from "../components/Card";
 import colors from "../config/colors";
-import ListItem from "../components/ListItem";
-
+const listings = [
+  {
+    id: 1,
+    title: "Red Jacket",
+    price: 100,
+    image: require("../assets/dog.jpg"),
+  },
+  {
+    id: 2,
+    title: "Couch",
+    price: 400,
+    image: require("../assets/dog.jpg"),
+  },
+];
 const ListingsScreen = () => {
   return (
-    <View>
-      <Image style={styles.image} source={require("../assets/jacket.png")} />
-      <View style={styles.detailContainer}>
-        <Text style={styles.title}>Red Jacket for Sale</Text>
-        <Text style={styles.price}>$100</Text>
-        <View style={styles.userContainer}>
-          <ListItem
-            image={require("../assets/unnamed.jpg")}
-            title="Aly"
-            subTitle="5 Listings"
+    <Screen style={styles.screen}>
+      <FlatList
+        data={listings}
+        keyExtractor={(listing) => listing.id.toString()}
+        renderItem={({ item }) => (
+          <Card
+            title={item.title}
+            subTitle={`$ ${item.price}`}
+            image={item.image}
           />
-        </View>
-      </View>
-    </View>
+        )}
+      />
+    </Screen>
   );
 };
 
 export default ListingsScreen;
 
 const styles = StyleSheet.create({
-  detailContainer: {
+  screen: {
     padding: 20,
-  },
-  image: {
-    width: "100%",
-    height: 300,
-  },
-  price: {
-    color: colors.secondary,
-    fontWeight: "bold",
-    fontSize: 20,
-    marginVertical: 10,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "500",
-  },
-  userContainer: {
-    marginVertical: 40,
+    backgroundColor: colors.light,
   },
 });
