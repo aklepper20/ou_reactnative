@@ -3,6 +3,7 @@ import React from "react";
 import Screen from "../components/Screen";
 import Card from "../components/Card";
 import colors from "../config/colors";
+
 const listings = [
   {
     id: 1,
@@ -17,7 +18,7 @@ const listings = [
     image: require("../assets/dog.jpg"),
   },
 ];
-const ListingsScreen = () => {
+const ListingsScreen = ({ navigation }) => {
   return (
     <Screen style={styles.screen}>
       <FlatList
@@ -28,6 +29,7 @@ const ListingsScreen = () => {
             title={item.title}
             subTitle={`$ ${item.price}`}
             image={item.image}
+            onPress={() => navigation.navigate("ListingDetails", item)}
           />
         )}
       />

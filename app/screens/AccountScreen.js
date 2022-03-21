@@ -5,7 +5,7 @@ import ListItem from "../components/ListItem";
 import colors from "../config/colors";
 import Icon from "../components/Icon";
 import ListItemSeperator from "../components/ListItemSeperator";
-const AccountScreen = () => {
+const AccountScreen = ({ navigation }) => {
   const menuItems = [
     {
       title: "My Listings",
@@ -20,6 +20,7 @@ const AccountScreen = () => {
         name: "email",
         backgroundColor: colors.secondary,
       },
+      targetScreen: "Messages",
     },
   ];
   return (
@@ -45,6 +46,7 @@ const AccountScreen = () => {
                   backgroundColor={item.icon.backgroundColor}
                 />
               }
+              onPress={() => navigation.navigate(item.targetScreen)}
             />
           )}
         />

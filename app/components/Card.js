@@ -1,18 +1,25 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableWithoutFeedback,
+} from "react-native";
 import React from "react";
 
 import colors from "../config/colors";
-import StyleSheetValidation from "react-native/Libraries/StyleSheet/StyleSheetValidation";
 
-const Card = ({ title, subTitle, image }) => {
+const Card = ({ title, subTitle, image, onPress }) => {
   return (
-    <View style={styles.card}>
-      <Image style={styles.image} source={image} />
-      <View style={styles.detailContainer}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.subTitle}>{subTitle}</Text>
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View style={styles.card}>
+        <Image style={styles.image} source={image} />
+        <View style={styles.detailContainer}>
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.subTitle}>{subTitle}</Text>
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 

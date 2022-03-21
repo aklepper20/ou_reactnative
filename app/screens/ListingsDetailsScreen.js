@@ -3,13 +3,15 @@ import React from "react";
 import colors from "../config/colors";
 import ListItem from "../components/ListItem";
 
-const ListingsDetailScreen = () => {
+const ListingsDetailScreen = ({ route }) => {
+  const listing = route.params;
+
   return (
     <View>
-      <Image style={styles.image} source={require("../assets/jacket.png")} />
+      <Image style={styles.image} source={listing.image} />
       <View style={styles.detailContainer}>
-        <Text style={styles.title}>Red Jacket for Sale</Text>
-        <Text style={styles.price}>$100</Text>
+        <Text style={styles.title}>{listing.title}</Text>
+        <Text style={styles.price}>${listing.price}</Text>
         <View style={styles.userContainer}>
           <ListItem
             image={require("../assets/unnamed.jpg")}
