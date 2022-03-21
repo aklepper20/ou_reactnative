@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, Text, View, SafeAreaView, Switch } from "react-native";
 import AppButton from "./app/components/AppButton";
 import MessagesScreen from "./app/screens/MessagesScreen";
@@ -14,6 +14,9 @@ import AppTextInput from "./app/components/AppTextInput";
 import AppPicker from "./app/components/AppPicker";
 import LoginScreen from "./app/screens/LoginScreen";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
+
+import * as Permissions from "expo-permissions";
+import * as ImagePicker from "expo-image-picker";
 
 export default function App() {
   return <ListingEditScreen />;
